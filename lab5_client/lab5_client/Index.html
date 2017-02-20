@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+    <button id="btnGetStudents">Get Students</button>
+    <pre id="preOutput"></pre>
+    <script>
+        $(function () {
+            var baseUrl = "http://lab5hanjojang.azurewebsites.net";
+            var accessToken = "";
+
+            var getStudents = function () {
+                var url = baseUrl + "/api/students/";
+                $.get(url).always(showResponse);
+                return false;
+            };
+
+
+            var showResponse = function (data) {
+                $("#preOutput").text(JSON.stringify(data, null, 4));
+            };
+
+            $("#btnGetStudents").click(getStudents);
+
+   
+
+        });
+    
+    </script>
+</body>
+</html>
